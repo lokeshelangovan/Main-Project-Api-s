@@ -1,0 +1,6 @@
+@ApiForMenswear_HostAddress = http://localhost:5109
+
+GET {{ApiForMenswear_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
