@@ -9,9 +9,7 @@ namespace ApiForMenswear.Interface
 		void Insert(UserSignup signup);
 		void UpdateSignup(int id, UserSignup updatedSignup);
 		void DeleteSignup(int id);
-		void DeleteAllUsers();
-
-		//UserSignup Login(string usernameOrEmail, string password);
+		void DeleteAllUsers();		
 		UserSignup GetByEmail(string email);
 
 	}

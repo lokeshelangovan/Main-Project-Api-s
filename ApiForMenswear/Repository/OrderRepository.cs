@@ -6,9 +6,9 @@ namespace ApiForMenswear.Repository
 {
 	public class OrderRepository : IOrderRepository
 	{
-		private readonly ApiContext _context;
+		private readonly MenswearContext _context;
 
-		public OrderRepository(ApiContext context)
+		public OrderRepository(MenswearContext context)
 		{
 			_context = context;
 		}
@@ -48,13 +48,13 @@ namespace ApiForMenswear.Repository
 			var existingOrder = _context.Order.FirstOrDefault(o => o.Id == orderId);
 			if (existingOrder != null)
 			{
-				existingOrder.UserSignupId = order.UserSignupId;
-				
-				existingOrder.OrderDate = order.OrderDate;
-				existingOrder.Status = order.Status ?? existingOrder.Status;
+				existingOrder.UserSignupId = order.UserSignupId;				
+				existingOrder.OrderDate = order.OrderDate;								
 				existingOrder.ShippingAddress = order.ShippingAddress ?? existingOrder.ShippingAddress;
-				existingOrder.BillingAddress = order.BillingAddress ?? existingOrder.BillingAddress;
 				existingOrder.TotalAmount = order.TotalAmount;
+				existingOrder.OrderStatus = order.OrderStatus ?? existingOrder.OrderStatus;
+				existingOrder.FullName = order.FullName ?? existingOrder.FullName;
+				existingOrder.CreditCard = order.CreditCard;
 
 				_context.SaveChanges();
 			}

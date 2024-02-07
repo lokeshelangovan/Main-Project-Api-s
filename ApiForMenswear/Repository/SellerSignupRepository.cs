@@ -7,9 +7,9 @@ namespace ApiForMenswear.Repository
 {
 	public class SellerSignupRepository : ISellerSignupRepository
 	{
-		private readonly ApiContext _context;
+		private readonly MenswearContext _context;
 
-		public SellerSignupRepository(ApiContext context)
+		public SellerSignupRepository(MenswearContext context)
 		{
 			_context = context;
 		}

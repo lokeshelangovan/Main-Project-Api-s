@@ -6,9 +6,9 @@ namespace ApiForMenswear.Repository
 {
 	public class ProductManagementRepository : IProductManagementRepository
 	{
-		private readonly ApiContext _context;
+		private readonly MenswearContext _context;
 
-		public ProductManagementRepository(ApiContext context)
+		public ProductManagementRepository(MenswearContext context)
 		{
 			_context = context;
 		}
@@ -57,9 +57,8 @@ namespace ApiForMenswear.Repository
 			{
 				existingProduct.Name = product.Name ?? existingProduct.Name;
 				existingProduct.Description = product.Description ?? existingProduct.Description;
-				existingProduct.Price = product.Price ?? existingProduct.Price;
-				existingProduct.Category = product.Category;
-				existingProduct.ImageUrl = product.ImageUrl ?? existingProduct.ImageUrl;
+				existingProduct.Price = product.Price ?? existingProduct.Price;				
+				existingProduct.ImageBase64 = product.ImageBase64 ?? existingProduct.ImageBase64;
 				existingProduct.Quantity = product.Quantity;
 
 				_context.SaveChanges();

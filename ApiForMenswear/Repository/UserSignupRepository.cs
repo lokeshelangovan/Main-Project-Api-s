@@ -7,9 +7,9 @@ namespace ApiForMenswear.Repository
 {
 	public class UserSignupRepository : IUserSignupRepository
 	{
-		private readonly ApiContext _context;
+		private readonly MenswearContext _context;
 
-		public UserSignupRepository(ApiContext context)
+		public UserSignupRepository(MenswearContext context)
 		{
 			_context = context;
 		}
@@ -58,11 +58,7 @@ namespace ApiForMenswear.Repository
 			_context.SaveChanges();
 		}
 
-		//public UserSignup Login(string usernameOrEmail, string password)
-		//{
-		//	throw new NotImplementedException();
-		//}
-
+		
 		public void UpdateSignup(int id, UserSignup updatedSignup)
 		{
 			var existingSignup = _context.UserSignup.FirstOrDefault(s => s.Id == id);

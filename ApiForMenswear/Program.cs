@@ -1,18 +1,23 @@
 using ApiForMenswear.Data;
 using ApiForMenswear.Interface;
 using ApiForMenswear.Repository;
+
 using Microsoft.EntityFrameworkCore;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ApiContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("ApiContext")));
+builder.Services.AddDbContext<MenswearContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("MenswearContext"))
+.LogTo(Console.WriteLine, LogLevel.Information));
 builder.Services.AddScoped<IUserSignupRepository, UserSignupRepository>();
 builder.Services.AddScoped<ISellerSignupRepository, SellerSignupRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IProductManagementRepository, ProductManagementRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+
+
 
 var MyAllowSpecificationOrigin = "_MyAllowSpecificationOrigin";
 builder.Services.AddCors(options =>
